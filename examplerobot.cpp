@@ -5,6 +5,15 @@ int BRP = 1; //initialize and declare BRP as an integer with a value 1
 int BLP = 3; //initialize and declare BLP as an integer with a value 3
 int LServoPort = 4; //left servo port
 int RServoPort = 5; //right servo port
+std::string= ;
+std::string = ;
+std::string = ;
+std::string = ;
+std::string = ;
+std::string = ;
+std::string = ;
+std::string = ;
+
 const std::string autoNameMid = "Middle Auto";
 const std::string autoNameLeft= "Left Auto";
 const std::string autoNameRight = "Right Auto";
@@ -48,9 +57,7 @@ public:
 			robo.ramp("down");
 	}
 	void TeleopPeriodic() {
-  if(robo.A != 0){
-  robo.Drive(.5,.5);
-	}
+		robo.buton(
 	void TestPeriodic() {
 		lw->Run();
 	}
