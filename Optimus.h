@@ -37,6 +37,9 @@ class Optimus{
 	frc::Timer autoTimer;
 	frc::Timer teleTime;
 
+	void drive(double Lval, double Rval){
+		myRobot.TankDrive(Lval, Rval);	
+	}
 	void AutoDrive(double Lval, double Rval, double start, double fin){
 		if(start < autoTimer.Get() && autoTimer.Get() < fin){
 			myRobot.TankDrive(-Lval, -Rval);
