@@ -1,4 +1,4 @@
-#include <optimus.h>
+#include <WillsClass.h>
 int FRP = 0; //initialize and declare FRP as an integer with a value 0
 int FLP = 2; //initialize and declare FLP as an integer with a value 2
 int BRP = 1; //initialize and declare BRP as an integer with a value 1
@@ -21,7 +21,7 @@ public:
 			timer.Start();
 		}
     
-	Optimus will{LServoPort,RServoPort,FRP,BRP,FLP,BLP};
+	WillsClass robo{LServoPort,RServoPort,FRP,BRP,FLP,BLP};
 	frc::LiveWindow* lw = LiveWindow::GetInstance();
 	frc::Spark winch {6};
 	frc::Timer autoTimer;
@@ -34,22 +34,22 @@ public:
 		timer.Reset(); //Set timer to 0
 		timer.Start(); //Start timer
 		autoTimer.Reset();
-		will.ramp("back");
+		robo.ramp("back");
 	}
 
 	void AutonomousPeriodic() {
 		if (autoSelected == autoNameMid) {
 			autoTimer.Start();
-			will.AutoDrive(-.5,-.545,.1,4.4); //mid 4.4, l/r 10
-			will.AutoRamp("up", 4.4, 6);
+			robo.AutoDrive(-.5,-.545,.1,4.4); //mid 4.4, l/r 10
+			robo.AutoRamp("up", 4.4, 6);
 		}
 	}
 	void TeleopInit() {
-			will.ramp("down");
+			robo.ramp("down");
 	}
 	void TeleopPeriodic() {
-  if(will.A != 0){
-  will.Drive(.5,.5);
+  if(robo.A != 0){
+  robo.Drive(.5,.5);
 	}
 	void TestPeriodic() {
 		lw->Run();
