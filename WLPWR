@@ -12,7 +12,6 @@
 #include <SmartDashboard/SmartDashboard.h>
 #include <Timer.h>
 #include <CameraServer.h>
-
 class Willpower{
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
@@ -26,7 +25,6 @@ class Willpower{
 	bool RTrigP = xbox.GetTriggerAxis((frc::GenericHID::JoystickHand)0);
 	bool start = xbox.GetStartButton();
 	bool back = xbox.GetBackButton();
-	int
 	Willpowe(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);
 	Willpower(int FRP, int BRP, int FLP, int BLP);
 	frc::Servo LServo {LServoPort}; //constructor for left servo
@@ -36,7 +34,6 @@ class Willpower{
 	frc::Timer timer;
 	frc::Timer autoTimer;
 	frc::Timer teleTime;
-
 	void drive(double Lval, double Rval){
 		myRobot.TankDrive(Lval, Rval);	
 	}
@@ -74,7 +71,6 @@ class Willpower{
 			RServo.SetAngle(Rangle);
 			LServo.SetAngle(Langle);
 	}
-
 	void ramp(std::string pos){
 		if(pos == "up"){
 			RServo.SetAngle(130);
@@ -103,7 +99,7 @@ class Willpower{
 		{
 			if(A != 0){
 				if(string == "drive"){
-					myRobot.TankDrive(val1,val2(;
+					myRobot.TankDrive(val1,val2);
 					}
 				if(string == "servo"){
 					RServo.SetAngle(val2);
@@ -116,7 +112,7 @@ class Willpower{
 		{
 			if(B != 0){
 				if(string == "drive"){
-					myRobot.TankDrive(val1,val2(;
+					myRobot.TankDrive(val1,val2);
 					}
 				if(string == "servo"){
 					RServo.SetAngle(val2);
@@ -125,5 +121,84 @@ class Willpower{
 				}
 		break;
 		}
-
+		case "X":
+		{
+			if(X != 0){
+				if(string == "drive"){
+					myRobot.TankDrive(val1,val2);
+					}
+				if(string == "servo"){
+					RServo.SetAngle(val2);
+					LServo.SetAngle(val1);
+					}	
+				}
+		break;
+		}		
+		case "Y":
+		{
+			if(Y != 0){
+				if(string == "drive"){
+					myRobot.TankDrive(val1,val2);
+					}
+				if(string == "servo"){
+					RServo.SetAngle(val2);
+					LServo.SetAngle(val1);
+					}	
+				}
+		break;
+		}
+	void buttonPress(std::string button, std::string, double val1, double val2 ){
+	switch (button) {
+		case "RBump":
+		{
+			if(RBump != 0){
+				if(string == "drive"){
+					myRobot.TankDrive(val1,val2);
+					}
+				if(string == "servo"){
+					RServo.SetAngle(val2);
+					LServo.SetAngle(val1);
+					}	
+				}
+		break;
+		}
+		case "LBump":
+		{
+			if(LBump != 0){
+				if(string == "drive"){
+					myRobot.TankDrive(val1,val2);
+					}
+				if(string == "servo"){
+					RServo.SetAngle(val2);
+					LServo.SetAngle(val1);
+					}	
+				}
+		break;
+		}
+		case "Start":
+		{
+			if(start != 0){
+				if(string == "drive"){
+					myRobot.TankDrive(val1,val2);
+					}
+				if(string == "servo"){
+					RServo.SetAngle(val2);
+					LServo.SetAngle(val1);
+					}	
+				}
+		break;
+		}
+		case "Back":
+		{
+			if(back != 0){
+				if(string == "drive"){
+					myRobot.TankDrive(val1,val2);
+					}
+				if(string == "servo"){
+					RServo.SetAngle(val2);
+					LServo.SetAngle(val1);
+					}	
+				}
+		break;
+		}
 };
