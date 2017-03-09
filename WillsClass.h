@@ -13,7 +13,7 @@
 #include <Timer.h>
 #include <CameraServer.h>
 
-class Optimus{
+class WillsClass{
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
 	bool X = xbox.GetXButton();//check if X button is pressed
@@ -27,8 +27,9 @@ class Optimus{
 	bool start = xbox.GetStartButton();
 	bool back = xbox.GetBackButton();
 	int
-	Optimus(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);
-	Optimus(int FRP, int BRP, int FLP, int BLP);
+	WillsClass(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);
+	WillsClass
+		(int FRP, int BRP, int FLP, int BLP);
 	frc::Servo LServo {LServoPort}; //constructor for left servo
 	frc::Servo RServo {RServoPort}; // constructor for right servo
 	frc::RobotDrive myRobot { FLP, BLP, FRP, BRP};//constructor for myRobot, paramaters are ports
