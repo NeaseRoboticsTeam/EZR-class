@@ -1,5 +1,15 @@
-#Welcome to the Nease Positronic Panthers FRC Team 6468 C++ Class File (that's a mouthful!)
+#Welcome to the Nease Positronic Panthers FRC Team 6468 C++ Class File
 
-The purpose of this repo is to have functions for next season pre made so we don't have to build them again.
+Class file for F.I.R.S.T robotics pre-loaded with custom functions
 
-"Code smarter, not more."
+##How do I use this class?
+
+  Simply include the header `#include <Optimus.h>` and intitialize it with the ports you want to use.
+  Then, whenever you want to use a method of the class, simply preceed it with the name of the instance
+  you've constructed. For example, if I constructed my function with `Optimus Will {4,5,0,1,3,2};`, I could
+  use member functions like this: `Will.AutoRamp("up");` 
+  
+  That should get you started using methods from the Optimus class (and other classes) 
+  Remember, you can always submit your own function ideas and we might make them methods of
+  the class. Thank you!
+
