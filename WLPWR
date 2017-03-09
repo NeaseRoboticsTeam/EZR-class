@@ -84,7 +84,7 @@ class Willpower{
 			RServo.SetAngle(250);
 			LServo.SetAngle(60);
 		}
-	}
+
 	void AutoRamp(std::string pos, double start, double fin){
 		if((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
 			if(pos == "up"){
@@ -97,5 +97,33 @@ class Willpower{
 				}
 		}
 	}
+	void buttonPress(char button, std::string, double val1, double val2 ){
+	switch (button) {
+		case "A":
+		{
+			if(A != 0){
+				if(string == "drive"){
+					myRobot.TankDrive(val1,val2(;
+					}
+				if(string == "servo"){
+					RServo.SetAngle(val2);
+					LServo.SetAngle(val1);
+					}
+				}
+		break;
+		}
+		case "B":
+		{
+			if(B != 0){
+				if(string == "drive"){
+					myRobot.TankDrive(val1,val2(;
+					}
+				if(string == "servo"){
+					RServo.SetAngle(val2);
+					LServo.SetAngle(val1);
+					}	
+				}
+		break;
+		}
 
 };
