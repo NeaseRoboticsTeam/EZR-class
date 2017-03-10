@@ -23,8 +23,16 @@ class Willpower{
 	bool LBump=xbox.GetBumper((frc::GenericHID::JoystickHand)1);
 	bool LTrigP = xbox.GetTriggerAxis((frc::GenericHID::JoystickHand)1);
 	bool RTrigP = xbox.GetTriggerAxis((frc::GenericHID::JoystickHand)0);
-	bool start = xbox.GetStartButton();
-	bool back = xbox.GetBackButton();
+	bool Start = xbox.GetStartButton();
+	bool Back = xbox.GetBackButton();
+	std::string rbump = "rbump";
+	std::string lbump = "lbump";
+	std::string start = "start";
+	std::string back = "back";	
+	char a = "a";
+	char c = "b";
+	char x = "x";
+	char y = "y";
 	Willpowe(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);
 	Willpower(int FRP, int BRP, int FLP, int BLP);
 	frc::Servo LServo {LServoPort}; //constructor for left servo
@@ -95,7 +103,7 @@ class Willpower{
 	}
 	void buttonPress(char button, std::string, double val1, double val2 ){
 	switch (button) {
-		case "A":
+		case "a":
 		{
 			if(A != 0){
 				if(string == "drive"){
@@ -108,7 +116,7 @@ class Willpower{
 				}
 		break;
 		}
-		case "B":
+		case "b":
 		{
 			if(B != 0){
 				if(string == "drive"){
@@ -121,7 +129,7 @@ class Willpower{
 				}
 		break;
 		}
-		case "X":
+		case "x":
 		{
 			if(X != 0){
 				if(string == "drive"){
@@ -134,7 +142,7 @@ class Willpower{
 				}
 		break;
 		}		
-		case "Y":
+		case "y":
 		{
 			if(Y != 0){
 				if(string == "drive"){
@@ -149,7 +157,7 @@ class Willpower{
 		}
 	void buttonPress(std::string button, std::string, double val1, double val2 ){
 	switch (button) {
-		case "RBump":
+		case "rbump":
 		{
 			if(RBump != 0){
 				if(string == "drive"){
@@ -162,7 +170,7 @@ class Willpower{
 				}
 		break;
 		}
-		case "LBump":
+		case "rbump":
 		{
 			if(LBump != 0){
 				if(string == "drive"){
@@ -175,7 +183,7 @@ class Willpower{
 				}
 		break;
 		}
-		case "Start":
+		case "start":
 		{
 			if(start != 0){
 				if(string == "drive"){
@@ -188,7 +196,7 @@ class Willpower{
 				}
 		break;
 		}
-		case "Back":
+		case "back":
 		{
 			if(back != 0){
 				if(string == "drive"){
