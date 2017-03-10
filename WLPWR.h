@@ -12,7 +12,7 @@
 #include <SmartDashboard/SmartDashboard.h>
 #include <Timer.h>
 #include <CameraServer.h>
-class Willpower{
+class Riff{
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
 	bool X = xbox.GetXButton();//check if X button is pressed
@@ -33,8 +33,8 @@ class Willpower{
 	char c = "b";
 	char x = "x";
 	char y = "y";
-	Willpowe(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);
-	Willpower(int FRP, int BRP, int FLP, int BLP);
+	Riff(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);
+	Riff(int FRP, int BRP, int FLP, int BLP);
 	frc::Servo LServo {LServoPort}; //constructor for left servo
 	frc::Servo RServo {RServoPort}; // constructor for right servo
 	frc::RobotDrive myRobot { FLP, BLP, FRP, BRP};//constructor for myRobot, paramaters are ports
