@@ -1,4 +1,4 @@
-#include <WLPWR.h>
+#include <Riff.h>
 int FRP = 0; //initialize and declare FRP as an integer with a value 0
 int FLP = 2; //initialize and declare FLP as an integer with a value 2
 int BRP = 1; //initialize and declare BRP as an integer with a value 1
@@ -23,14 +23,14 @@ class Robot: public frc::IterativeRobot{
 public:
 	void RobotInit() {
 			CameraServer::GetInstance()->StartAutomaticCapture();
-		  chooser.AddDefault(autoNameMid, autoNameMid);
+		  	chooser.AddDefault(autoNameMid, autoNameMid);
 			chooser.AddObject(autoNameLeft, autoNameLeft);
 			chooser.AddObject(autoNameRight, autoNameRight);
 			frc::SmartDashboard::PutData("Auto Modes", &chooser);
 			timer.Start();
 		}
     
-	Willpower robo{LServoPort,RServoPort,FRP,BRP,FLP,BLP};
+	Riff robo{LServoPort,RServoPort,FRP,BRP,FLP,BLP};
 	frc::LiveWindow* lw = LiveWindow::GetInstance();
 	frc::Spark winch {6};
 	frc::Timer autoTimer;
