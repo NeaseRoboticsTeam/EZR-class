@@ -101,15 +101,15 @@ class Riff{
 				}
 		}
 	}
-	void buttonPress(char button, std::string, double val1, double val2 ){
+	void buttonPress(char button, std::string func, double val1, double val2 ){
 	switch (button) {
 		case "a":
 		{
 			if(A != 0){
-				if(string == "drive"){
+				if(func == "drive"){
 					myRobot.TankDrive(val1,val2);
 					}
-				if(string == "servo"){
+				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
 					}
