@@ -33,8 +33,8 @@ class Riff{
 	char c = "b";
 	char x = "x";
 	char y = "y";
-	Riff(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);
-	Riff(int FRP, int BRP, int FLP, int BLP);
+	Willpower(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);
+	Willpower(int FRP, int BRP, int FLP, int BLP);
 	frc::Servo LServo {LServoPort}; //constructor for left servo
 	frc::Servo RServo {RServoPort}; // constructor for right servo
 	frc::RobotDrive myRobot { FLP, BLP, FRP, BRP};//constructor for myRobot, paramaters are ports
