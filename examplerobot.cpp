@@ -1,4 +1,4 @@
-#include <Riff.h>
+#include <Willpower.h>
 int FRP = 0; //initialize and declare FRP as an integer with a value 0
 int FLP = 2; //initialize and declare FLP as an integer with a value 2
 int BRP = 1; //initialize and declare BRP as an integer with a value 1
@@ -30,7 +30,7 @@ public:
 			timer.Start();
 		}
     
-	Riff robo{LServoPort,RServoPort,FRP,BRP,FLP,BLP};
+	Willpower robo{LServoPort,RServoPort,FRP,BRP,FLP,BLP};
 	frc::LiveWindow* lw = LiveWindow::GetInstance();
 	frc::Spark winch {6};
 	frc::Timer autoTimer;
