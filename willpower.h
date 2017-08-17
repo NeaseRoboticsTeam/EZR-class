@@ -12,7 +12,7 @@
 #include <SmartDashboard/SmartDashboard.h>
 #include <Timer.h>
 #include <CameraServer.h>
-class Riff{
+class Willpower{
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
 	bool X = xbox.GetXButton();//check if X button is pressed
