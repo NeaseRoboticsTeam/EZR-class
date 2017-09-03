@@ -14,19 +14,19 @@
 #include <Timer.h>
 #include <CameraServer.h>
 class Willpower{
-	//Instantiate Variables for functions using controller
+	//Initialzie Variables for functions using controller
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
 	bool X = xbox.GetXButton();//check if X button is pressed
 	bool Y = xbox.GetYButton();//check if Y button is pressed
+	bool Start = xbox.GetStartButton();//check if start button is pressed
+	bool Back = xbox.GetBackButton();//check if back button is pressed
+	bool RBump = xbox.GetBumper((frc::GenericHID::JoystickHand)0);//check if right bumper is pressed
+	bool LBump = xbox.GetBumper((frc::GenericHID::JoystickHand)1);//check if left bumper is pressed
 	double LStickY =  xbox.GetY((frc::GenericHID::JoystickHand)1);//check y value of left stick
 	double RStickY =  xbox.GetY((frc::GenericHID::JoystickHand)0);//check y value of right stick
-	bool RBump=xbox.GetBumper((frc::GenericHID::JoystickHand)0);
-	bool LBump=xbox.GetBumper((frc::GenericHID::JoystickHand)1);
 	double LTrigP = xbox.GetTriggerAxis((frc::GenericHID::JoystickHand)1);//Get the trigger axis value of the controller left hand
 	double RTrigP = xbox.GetTriggerAxis((frc::GenericHID::JoystickHand)0);//Get the trigger axis value of the controller right hand
-	bool Start = xbox.GetStartButton();
-	bool Back = xbox.GetBackButton();
 	std::string rbump = "rbump";
 	std::string lbump = "lbump";
 	std::string start = "start";
@@ -35,6 +35,8 @@ class Willpower{
 	char c = "b";
 	char x = "x";
 	char y = "y";
+	
+	
 	Willpower(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);//constructor for willpower
 	Willpower(int FRP, int BRP, int FLP, int BLP);//constructor for willpower **example of constructor overloading**
 	frc::Servo LServo {LServoPort}; //constructor for left servo
