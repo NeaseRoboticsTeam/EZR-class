@@ -1,3 +1,4 @@
+//Essentials needed to run the class
 #include <iostream>
 #include <memory>
 #include <string>
@@ -13,16 +14,17 @@
 #include <Timer.h>
 #include <CameraServer.h>
 class Willpower{
+	//Instantiate Variables for functions using controller
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
 	bool X = xbox.GetXButton();//check if X button is pressed
 	bool Y = xbox.GetYButton();//check if Y button is pressed
-	bool LStickY =  xbox.GetY((frc::GenericHID::JoystickHand)1);//check y value of left stick
-	bool RStickY =  xbox.GetY((frc::GenericHID::JoystickHand)0);//check y value of right stick
+	double LStickY =  xbox.GetY((frc::GenericHID::JoystickHand)1);//check y value of left stick
+	double RStickY =  xbox.GetY((frc::GenericHID::JoystickHand)0);//check y value of right stick
 	bool RBump=xbox.GetBumper((frc::GenericHID::JoystickHand)0);
 	bool LBump=xbox.GetBumper((frc::GenericHID::JoystickHand)1);
-	bool LTrigP = xbox.GetTriggerAxis((frc::GenericHID::JoystickHand)1);
-	bool RTrigP = xbox.GetTriggerAxis((frc::GenericHID::JoystickHand)0);
+	double LTrigP = xbox.GetTriggerAxis((frc::GenericHID::JoystickHand)1);//Get the trigger axis value of the controller left hand
+	double RTrigP = xbox.GetTriggerAxis((frc::GenericHID::JoystickHand)0);//Get the trigger axis value of the controller right hand
 	bool Start = xbox.GetStartButton();
 	bool Back = xbox.GetBackButton();
 	std::string rbump = "rbump";
@@ -33,8 +35,8 @@ class Willpower{
 	char c = "b";
 	char x = "x";
 	char y = "y";
-	Willpower(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);
-	Willpower(int FRP, int BRP, int FLP, int BLP);
+	Willpower(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);//constructor for willpower
+	Willpower(int FRP, int BRP, int FLP, int BLP);//constructor for willpower **example of constructor overloading**
 	frc::Servo LServo {LServoPort}; //constructor for left servo
 	frc::Servo RServo {RServoPort}; // constructor for right servo
 	frc::RobotDrive myRobot { FLP, BLP, FRP, BRP};//constructor for myRobot, paramaters are ports
@@ -119,10 +121,10 @@ class Willpower{
 		case "b":
 		{
 			if(B != 0){
-				if(string == "drive"){
+				if(func == "drive"){
 					myRobot.TankDrive(val1,val2);
 					}
-				if(string == "servo"){
+				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
 					}	
@@ -132,10 +134,10 @@ class Willpower{
 		case "x":
 		{
 			if(X != 0){
-				if(string == "drive"){
+				if(func == "drive"){
 					myRobot.TankDrive(val1,val2);
 					}
-				if(string == "servo"){
+				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
 					}	
@@ -145,38 +147,38 @@ class Willpower{
 		case "y":
 		{
 			if(Y != 0){
-				if(string == "drive"){
+				if(func == "drive"){
 					myRobot.TankDrive(val1,val2);
 					}
-				if(string == "servo"){
+				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
 					}	
 				}
 		break;
 		}
-	void buttonPress(std::string button, std::string, double val1, double val2 ){
+	void buttonPress(std::string button, std::string func, double val1, double val2 ){
 	switch (button) {
 		case "rbump":
 		{
 			if(RBump != 0){
-				if(string == "drive"){
+				if(func == "drive"){
 					myRobot.TankDrive(val1,val2);
 					}
-				if(string == "servo"){
+				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
 					}	
 				}
 		break;
 		}
-		case "rbump":
+		case "lbump":
 		{
 			if(LBump != 0){
-				if(string == "drive"){
+				if(func == "drive"){
 					myRobot.TankDrive(val1,val2);
 					}
-				if(string == "servo"){
+				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
 					}	
@@ -185,11 +187,11 @@ class Willpower{
 		}
 		case "start":
 		{
-			if(start != 0){
-				if(string == "drive"){
+			if(Start != 0){
+				if(func == "drive"){
 					myRobot.TankDrive(val1,val2);
 					}
-				if(string == "servo"){
+				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
 					}	
@@ -198,11 +200,11 @@ class Willpower{
 		}
 		case "back":
 		{
-			if(back != 0){
-				if(string == "drive"){
+			if(Back != 0){
+				if(func == "drive"){
 					myRobot.TankDrive(val1,val2);
 					}
-				if(string == "servo"){
+				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
 					}	
