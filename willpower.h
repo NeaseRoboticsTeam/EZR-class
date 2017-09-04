@@ -14,7 +14,7 @@
 #include <Timer.h>
 #include <CameraServer.h>
 class Willpower{
-	//Initialize Variables for functions using controller
+	//Initialzie Variables for functions using controller
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
 	bool X = xbox.GetXButton();//check if X button is pressed
@@ -30,13 +30,13 @@ class Willpower{
 	std::string rbump = "rbump";
 	std::string lbump = "lbump";
 	std::string start = "start";
-	std::string back = "back";	
-	char a = "a";
-	char c = "b";
-	char x = "x";
-	char y = "y";
-	
-	
+	std::string back = "back";
+	std::string a = "a";
+	std::string c = "b";
+	std::string x = "x";
+	std::string y = "y";
+
+
 	Willpower(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);//constructor for willpower
 	Willpower(int FRP, int BRP, int FLP, int BLP);//constructor for willpower **example of constructor overloading**
 	frc::Servo LServo {LServoPort}; //constructor for left servo
@@ -46,10 +46,14 @@ class Willpower{
 	frc::Timer timer;
 	frc::Timer autoTimer;
 	frc::Timer teleTime;
+	
+	//simple drive function, basically our shell over the TankDrive function ;)
 	void drive(double Lval, double Rval){
-		myRobot.TankDrive(Lval, Rval);	
+		myRobot.TankDrive(Lval, Rval);
 	}
-	void AutoDrive(double Lval, double Rval, double start, double fin){
+	
+	//A more useful function, this one is used for when you need tankdrive in the auto phase. Just initialize with left and right speeds, a start time, and an end time 
+	void autoDrive(double Lval, double Rval, double start, double fin){
 		if(start < autoTimer.Get() && autoTimer.Get() < fin){
 			myRobot.TankDrive(-Lval, -Rval);
 		}
@@ -57,6 +61,8 @@ class Willpower{
 			myRobot.TankDrive(0.0,0.0);
 		}
 	}
+	
+	//Another version of autodrive, accepts directions instead of individual powers
 	void AutoDrive(std::string dir, double start, double fin){
 		if((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
 		if(dir == "forward"){
@@ -79,10 +85,12 @@ class Willpower{
 			myRobot.TankDrive(0.0,0.0);
 		}
 	}
+	//function to set ramp to a certain angle. BE CAREFUL NOT TO BREAK THE SERVOS WITH THIS ONE
 	void ramp(int Langle, int Rangle){
 			RServo.SetAngle(Rangle);
 			LServo.SetAngle(Langle);
 	}
+	//another ramp function, CAUTION CAUTION CAUTION CAUTION!!!!!!! MAY BREAK SERVOS!!!
 	void ramp(std::string pos){
 		if(pos == "up"){
 			RServo.SetAngle(130);
@@ -92,8 +100,9 @@ class Willpower{
 			RServo.SetAngle(250);
 			LServo.SetAngle(60);
 		}
-
-	void AutoRamp(std::string pos, double start, double fin){
+	}
+	//a third function for the ramp, just as dangerous as the others. this one can be used in auto mode though, so you have EVEN LESS CONTROL.
+	void autoRamp(std::string pos, double start, double fin){
 		if((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
 			if(pos == "up"){
 				RServo.SetAngle(130);
@@ -103,11 +112,12 @@ class Willpower{
 				RServo.SetAngle(250);
 				LServo.SetAngle(60);
 				}
+			}
 		}
-	}
+	//The GOOD STUFF. buttonPress function is meant to simplify our code by
 	void buttonPress(char button, std::string func, double val1, double val2 ){
 	switch (button) {
-		case "a":
+		case "a"||"A":
 		{
 			if(A != 0){
 				if(func == "drive"){
@@ -120,7 +130,7 @@ class Willpower{
 				}
 		break;
 		}
-		case "b":
+		case "b"||"B":
 		{
 			if(B != 0){
 				if(func == "drive"){
@@ -129,11 +139,11 @@ class Willpower{
 				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
-					}	
+					}
 				}
 		break;
 		}
-		case "x":
+		case "x"||"X":
 		{
 			if(X != 0){
 				if(func == "drive"){
@@ -142,11 +152,11 @@ class Willpower{
 				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
-					}	
+					}
 				}
 		break;
-		}		
-		case "y":
+		}
+		case "y"||"Y":
 		{
 			if(Y != 0){
 				if(func == "drive"){
@@ -155,10 +165,12 @@ class Willpower{
 				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
-					}	
+					}
 				}
 		break;
+			}
 		}
+	}
 	void buttonPress(std::string button, std::string func, double val1, double val2 ){
 	switch (button) {
 		case "rbump":
@@ -170,7 +182,7 @@ class Willpower{
 				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
-					}	
+					}
 				}
 		break;
 		}
@@ -183,7 +195,7 @@ class Willpower{
 				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
-					}	
+					}
 				}
 		break;
 		}
@@ -196,7 +208,7 @@ class Willpower{
 				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
-					}	
+					}
 				}
 		break;
 		}
@@ -209,8 +221,10 @@ class Willpower{
 				if(func == "servo"){
 					RServo.SetAngle(val2);
 					LServo.SetAngle(val1);
-					}	
+					}
 				}
 		break;
 		}
+
+	}
 };
