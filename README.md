@@ -23,3 +23,5 @@ Class file for F.I.R.S.T robotics pre-loaded with custom functions
    `robo.buttonPress(a,tank,.5,.5);`
    
   Before, we had to instantiate the controller, the servos, the motors, and use a bunch of different includes. Now we just name the variables accordingly and we're done! also, functions of my design won't have to be replicated- They're already in the class as member functions. Also, I'm working on making a button press function, so we don't have to make a new button press if loop everytime we need a functionality added. Functions for the robot should be made abstract and stored in the class for future use. We also need method documentation, so if someone wants to make that, that'd be good ;)
+  
+  Also Go Check out our WIKI to get futher briefing on this project!
