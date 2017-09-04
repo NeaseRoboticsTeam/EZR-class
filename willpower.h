@@ -14,7 +14,7 @@
 #include <Timer.h>
 #include <CameraServer.h>
 class Willpower{
-	//Initialzie Variables for functions using controller
+	//Initialize Variables for functions using controller
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
 	bool X = xbox.GetXButton();//check if X button is pressed
