@@ -68,7 +68,10 @@ class Willpower{
 	}
 	
 	//Another version of autodrive, accepts directions instead of individual powers
+
+
 	void autoDrive(std::string dir, double start, double fin){
+    dir = tolower(dir);
 		autoTimer.Reset();
 		autoTimer.Start();
 		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
@@ -97,6 +100,7 @@ class Willpower{
 	}
 	//another ramp function, CAUTION CAUTION CAUTION CAUTION!!!!!!! MAY BREAK SERVOS!!!
 	void ramp(std::string pos){
+		pos = tolower(pos);
 		if(pos == "up"){
 			RServo.SetAngle(130);
 			LServo.SetAngle(170);
@@ -108,6 +112,7 @@ class Willpower{
 	}
 	//a third function for the ramp, just as dangerous as the others. this one can be used in auto mode though, so you have EVEN LESS CONTROL.
 	void autoRamp(std::string pos, double start, double fin){
+  pos = tolower(pos);
 		autoTimer.Reset();
 		autoTimer.Start();
 		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
@@ -124,8 +129,9 @@ class Willpower{
 		}
 	//The GOOD STUFF. buttonPress function is meant to simplify our code by
 	void buttonPress(char button, std::string func, double val1, double val2 ){
+		button = tolower(button);
 	switch (button) {
-		case "a"||"A":
+		case "a":
 		{
 			if(A != 0){
 				if(func == "drive"){
@@ -138,7 +144,7 @@ class Willpower{
 				}
 		break;
 		}
-		case "b"||"B":
+		case "b":
 		{
 			if(B != 0){
 				if(func == "drive"){
@@ -151,7 +157,7 @@ class Willpower{
 				}
 		break;
 		}
-		case "x"||"X":
+		case "x":
 		{
 			if(X != 0){
 				if(func == "drive"){
@@ -164,7 +170,7 @@ class Willpower{
 				}
 		break;
 		}
-		case "y"||"Y":
+		case "y":
 		{
 			if(Y != 0){
 				if(func == "drive"){
@@ -180,6 +186,7 @@ class Willpower{
 		}
 	}
 	void buttonPress(std::string button, std::string func, double val1, double val2 ){
+		button = tolower(button);
 	switch (button) {
 		case "rbump":
 		{
