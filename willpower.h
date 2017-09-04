@@ -71,7 +71,7 @@ class Willpower{
 
 
 	void autoDrive(std::string dir, double start, double fin){
-    dir = tolower(dir);
+                dir = tolower(dir);
 		autoTimer.Reset();
 		autoTimer.Start();
 		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
@@ -112,7 +112,7 @@ class Willpower{
 	}
 	//a third function for the ramp, just as dangerous as the others. this one can be used in auto mode though, so you have EVEN LESS CONTROL.
 	void autoRamp(std::string pos, double start, double fin){
-  pos = tolower(pos);
+                pos = tolower(pos);
 		autoTimer.Reset();
 		autoTimer.Start();
 		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
