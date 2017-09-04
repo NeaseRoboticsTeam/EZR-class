@@ -14,6 +14,7 @@
 #include <Timer.h>
 #include <CameraServer.h>
 class Willpower{
+	private:
 	//Initialzie Variables for functions using controller
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
@@ -36,13 +37,16 @@ class Willpower{
 	std::string x = "x";
 	std::string y = "y";
 
-
+        public:
 	Willpower(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);//constructor for willpower
+	Willpower(int LServoPort, int RServoPort, int Lmotor, int RMotor);
 	Willpower(int FRP, int BRP, int FLP, int BLP);//constructor for willpower **example of constructor overloading**
-	frc::Servo LServo {LServoPort}; //constructor for left servo
-	frc::Servo RServo {RServoPort}; // constructor for right servo
-	frc::RobotDrive myRobot { FLP, BLP, FRP, BRP};//constructor for myRobot, paramaters are ports
-	frc::XboxController xbox {0}; //constructor for xbox controller
+	Willpower(int LMotor, int RMotor);
+	frc::Servo LServo (LServoPort); //constructor for left servo
+	frc::Servo RServo (RServoPort); // constructor for right servo
+	frc::RobotDrive myRobot ( FLP, BLP, FRP, BRP);
+	frc::RobotDrive myRobot ( Lmotor, Rmotor); //constructor for myRobot, paramaters are ports
+	frc::XboxController xbox (0); //constructor for xbox controller
 	frc::Timer timer;
 	frc::Timer autoTimer;
 	frc::Timer teleTime;
@@ -54,17 +58,20 @@ class Willpower{
 	
 	//A more useful function, this one is used for when you need tankdrive in the auto phase. Just initialize with left and right speeds, a start time, and an end time 
 	void autoDrive(double Lval, double Rval, double start, double fin){
-		if(start < autoTimer.Get() && autoTimer.Get() < fin){
-			myRobot.TankDrive(-Lval, -Rval);
+		autoTimer.Reset();
+		autoTimer.Start();
+		while(start < autoTimer.Get() && autoTimer.Get() < fin){
+			myRobot.TankDrive(Lval, Rval);
 		}
-		else{
-			myRobot.TankDrive(0.0,0.0);
-		}
+		autoTimer.Stop();
+		
 	}
 	
 	//Another version of autodrive, accepts directions instead of individual powers
-	void AutoDrive(std::string dir, double start, double fin){
-		if((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
+	void autoDrive(std::string dir, double start, double fin){
+		autoTimer.Reset();
+		autoTimer.Start();
+		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
 		if(dir == "forward"){
 				myRobot.TankDrive(.5,.545);
 			}
@@ -80,10 +87,8 @@ class Willpower{
 		if(dir == "left"){
 				myRobot.TankDrive(-.5,.5);
 			}
-	 	}
-		else{
-			myRobot.TankDrive(0.0,0.0);
 		}
+		autoTimer.Stop();
 	}
 	//function to set ramp to a certain angle. BE CAREFUL NOT TO BREAK THE SERVOS WITH THIS ONE
 	void ramp(int Langle, int Rangle){
@@ -103,7 +108,9 @@ class Willpower{
 	}
 	//a third function for the ramp, just as dangerous as the others. this one can be used in auto mode though, so you have EVEN LESS CONTROL.
 	void autoRamp(std::string pos, double start, double fin){
-		if((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
+		autoTimer.Reset();
+		autoTimer.Start();
+		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
 			if(pos == "up"){
 				RServo.SetAngle(130);
 				LServo.SetAngle(170);
@@ -113,6 +120,7 @@ class Willpower{
 				LServo.SetAngle(60);
 				}
 			}
+		autoTimer.Stop();
 		}
 	//The GOOD STUFF. buttonPress function is meant to simplify our code by
 	void buttonPress(char button, std::string func, double val1, double val2 ){
