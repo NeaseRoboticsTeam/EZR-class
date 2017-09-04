@@ -14,8 +14,10 @@
 #include <Timer.h>
 #include <CameraServer.h>
 class Willpower{
+	
+
 	private:
-	//Initialzie Variables for functions using controller
+	//Initialize Variables for functions using controller
 	bool A = xbox.GetAButton();//check if A button is pressed
 	bool B = xbox.GetBButton();//check if B button is pressed
 	bool X = xbox.GetXButton();//check if X button is pressed
@@ -37,26 +39,27 @@ class Willpower{
 	std::string x = "x";
 	std::string y = "y";
 
-        public:
+	public:
 	Willpower(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);//constructor for willpower
-	Willpower(int LServoPort, int RServoPort, int Lmotor, int RMotor);
+	Willpower(int LServoPort, int RServoPort, int LMotor, int RMotor);
 	Willpower(int FRP, int BRP, int FLP, int BLP);//constructor for willpower **example of constructor overloading**
 	Willpower(int LMotor, int RMotor);
-	frc::Servo LServo (LServoPort); //constructor for left servo
-	frc::Servo RServo (RServoPort); // constructor for right servo
-	frc::RobotDrive myRobot ( FLP, BLP, FRP, BRP);
-	frc::RobotDrive myRobot ( Lmotor, Rmotor); //constructor for myRobot, paramaters are ports
-	frc::XboxController xbox (0); //constructor for xbox controller
+	frc::Servo LServo {LServoPort}; //constructor for left servo
+	frc::Servo RServo {RServoPort}; // constructor for right servo
+	frc::RobotDrive myRobot { FLP, BLP, FRP, BRP};
+	frc::RobotDrive myRobot { LMotor, RMotor}; //constructor for myRobot, paramaters are ports
+	frc::XboxController xbox {0}; //constructor for xbox controller
 	frc::Timer timer;
 	frc::Timer autoTimer;
 	frc::Timer teleTime;
-	
+
+
 	//simple drive function, basically our shell over the TankDrive function ;)
 	void drive(double Lval, double Rval){
 		myRobot.TankDrive(Lval, Rval);
 	}
-	
-	//A more useful function, this one is used for when you need tankdrive in the auto phase. Just initialize with left and right speeds, a start time, and an end time 
+
+	//A more useful function, this one is used for when you need tankdrive in the auto phase. Just initialize with left and right speeds, a start time, and an end time
 	void autoDrive(double Lval, double Rval, double start, double fin){
 		autoTimer.Reset();
 		autoTimer.Start();
@@ -64,14 +67,14 @@ class Willpower{
 			myRobot.TankDrive(Lval, Rval);
 		}
 		autoTimer.Stop();
-		
+
 	}
-	
+
 	//Another version of autodrive, accepts directions instead of individual powers
 
 
 	void autoDrive(std::string dir, double start, double fin){
-                dir = tolower(dir);
+          //      dir = tolower(dir);
 		autoTimer.Reset();
 		autoTimer.Start();
 		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
@@ -100,7 +103,7 @@ class Willpower{
 	}
 	//another ramp function, CAUTION CAUTION CAUTION CAUTION!!!!!!! MAY BREAK SERVOS!!!
 	void ramp(std::string pos){
-		pos = tolower(pos);
+	//	pos = tolower(pos);
 		if(pos == "up"){
 			RServo.SetAngle(130);
 			LServo.SetAngle(170);
@@ -112,7 +115,7 @@ class Willpower{
 	}
 	//a third function for the ramp, just as dangerous as the others. this one can be used in auto mode though, so you have EVEN LESS CONTROL.
 	void autoRamp(std::string pos, double start, double fin){
-                pos = tolower(pos);
+              //  pos = tolower(pos);
 		autoTimer.Reset();
 		autoTimer.Start();
 		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
@@ -186,7 +189,7 @@ class Willpower{
 		}
 	}
 	void buttonPress(std::string button, std::string func, double val1, double val2 ){
-		button = tolower(button);
+		//button = tolower(button);
 	switch (button) {
 		case "rbump":
 		{
