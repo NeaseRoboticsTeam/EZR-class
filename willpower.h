@@ -53,6 +53,17 @@ class Willpower{
 	frc::Timer autoTimer;
 	frc::Timer teleTime;
 
+	
+	//case insensitivity
+        std::string tolowerString(std::string charGroup){
+      
+                 std::string returnGroup = "";
+      
+                 for(int i - 0; i < charGroup.length(); i++){
+                       returnGroup += putchar(tolower(charGroup[i]));
+                 }
+                 return returnGroup;
+          }
 
 	//simple drive function, basically our shell over the TankDrive function ;)
 	void drive(double Lval, double Rval){
@@ -74,7 +85,7 @@ class Willpower{
 
 
 	void autoDrive(std::string dir, double start, double fin){
-          //      dir = tolower(dir);
+                dir = tolowerString(dir);
 		autoTimer.Reset();
 		autoTimer.Start();
 		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
@@ -115,7 +126,7 @@ class Willpower{
 	}
 	//a third function for the ramp, just as dangerous as the others. this one can be used in auto mode though, so you have EVEN LESS CONTROL.
 	void autoRamp(std::string pos, double start, double fin){
-              //  pos = tolower(pos);
+                pos = tolowerString(pos);
 		autoTimer.Reset();
 		autoTimer.Start();
 		while((start < autoTimer.Get() ) && (autoTimer.Get() < fin)){
@@ -189,7 +200,7 @@ class Willpower{
 		}
 	}
 	void buttonPress(std::string button, std::string func, double val1, double val2 ){
-		//button = tolower(button);
+		button = tolowerString(button);
 	switch (button) {
 		case "rbump":
 		{
