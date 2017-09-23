@@ -59,7 +59,7 @@ class Willpower{
       
                  std::string returnGroup = "";
       
-                 for(int i - 0; i < charGroup.length(); i++){
+                 for(int i = 0; i < charGroup.length(); i++){
                        returnGroup += putchar(tolower(charGroup[i]));
                  }
                  return returnGroup;
@@ -114,7 +114,7 @@ class Willpower{
 	}
 	//another ramp function, CAUTION CAUTION CAUTION CAUTION!!!!!!! MAY BREAK SERVOS!!!
 	void ramp(std::string pos){
-	//	pos = tolower(pos);
+		pos = tolowerstring(pos);
 		if(pos == "up"){
 			RServo.SetAngle(130);
 			LServo.SetAngle(170);
