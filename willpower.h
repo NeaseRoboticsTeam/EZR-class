@@ -97,12 +97,19 @@ class Willpower{
 				myRobot.TankDrive(-.5,-.5);
 			}
 
-		if(dir == "right"){
+		if(dir == "right pivot"){
 				myRobot.TankDrive(.5,-.5);
 			}
 
-		if(dir == "left"){
+		if(dir == "left pivot"){
 				myRobot.TankDrive(-.5,.5);
+			}
+		if(dir == "right swing"){
+				myRobot.TankDrive(.5,0);
+			}
+
+		if(dir == "left swing"){
+				myRobot.TankDrive(0,.5);
 			}
 		}
 		autoTimer.Stop();
