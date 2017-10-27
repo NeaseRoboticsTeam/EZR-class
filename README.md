@@ -1,4 +1,4 @@
-# Welcome to the Nease Positronic Panthers FRC Team 6468 C++ Class File
+# Welcome to the Nease Positronic Panthers FRC Team 6468 Class File
 ### Willpower Class
 
 Class file for F.I.R.S.T robotics
