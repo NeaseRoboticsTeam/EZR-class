@@ -1,13 +1,13 @@
 # Welcome to the Nease Positronic Panthers FRC Team 6468 C++ Class File
 ### Willpower Class
 
-Class file for F.I.R.S.T robotics pre-loaded with custom functions
+Class file for F.I.R.S.T robotics
 
 ### How do I use this class?
 
-  Simply include the header `#include <Willpower.h>` and intitialize it with the ports you want to use.
-  Then, whenever you want to use a method of the class, simply preceed it with the name of the instance
-  you've constructed. For example, if I constructed my instance with `Willpower robo {4,5,0,1,3,2};`, I could
+  Simply include the header `#include <Willpower.h>` and instantiate the class with the ports you want to use.
+  Then, whenever you want to use a method of the class, simply preceed it with the object name.
+  For example, if I named my object as follows: `Willpower robo {4,5,0,1,3,2};`, I could
   use member functions like this: `robo.autoRamp("up");` 
   
   That should get you started using methods from the Willpower class (and other classes) 
