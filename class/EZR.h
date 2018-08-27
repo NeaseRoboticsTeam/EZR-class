@@ -1,18 +1,5 @@
 //Essentials needed to run the class
-#include <iostream>
-#include <memory>
-#include <string>
-#include <RobotDrive.h>
-#include <XboxController.h>
-#include <Spark.h>
-#include <Servo.h>
-#include <math.h>
-#include <IterativeRobot.h>
-#include <LiveWindow/LiveWindow.h>
-#include <SmartDashboard/SendableChooser.h>
-#include <SmartDashboard/SmartDashboard.h>
-#include <Timer.h>
-#include <CameraServer.h>
+#include <essentials.h>
 class EZR{
 	
 
