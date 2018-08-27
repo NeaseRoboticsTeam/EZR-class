@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Willpower{
+public class EZR{
   	private boolean A = xbox.GetAButton();//check if A button is pressed
 	private boolean B = xbox.GetBButton();//check if B button is pressed
 	private boolean X = xbox.GetXButton();//check if X button is pressed
@@ -34,10 +34,10 @@ public class Willpower{
 	private String x = "x";
 	private String y = "y";
   
-   	 public Willpower(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);//constructor for willpower
-	 public Willpower(int LServoPort, int RServoPort, int LMotor, int RMotor);
-	 public Willpower(int FRP, int BRP, int FLP, int BLP);//constructor for willpower **example of constructor overloading**
-	 public Willpower(int LMotor, int RMotor);
+   	 public EZR(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);//constructor for willpower
+	 public EZR(int LServoPort, int RServoPort, int LMotor, int RMotor);
+	 public EZR(int FRP, int BRP, int FLP, int BLP);//constructor for willpower **example of constructor overloading**
+	 public EZR(int LMotor, int RMotor);
    	 Servo LServo = new Servo(LServoPort); //constructor for left servo
 	 Servo RServo = new Servo(RServoPort); // constructor for right servo
 	 RobotDrive myRobot = new RobotDrive( FLP, BLP, FRP, BRP);
