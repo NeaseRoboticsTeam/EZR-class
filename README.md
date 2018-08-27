@@ -1,16 +1,16 @@
 # Welcome to the Nease Positronic Panthers FRC Team 6468 Class File
-### Willpower Class
+### EZR Class
 
 Class file for F.I.R.S.T robotics
 
 ### How do I use this class?
 
-  Simply include the header `#include <Willpower.h>` and instantiate the class with the ports you want to use.
+  Simply include the header `#include <EZR.h>` and instantiate the class with the ports you want to use.
   Then, whenever you want to use a method of the class, simply preceed it with the object name.
-  For example, if I named my object as follows: `Willpower robo {4,5,0,1,3,2};`, I could
+  For example, if I named my object as follows: `EZR robo {4,5,0,1,3,2};`, I could
   use member functions like this: `robo.autoRamp("up");` 
   
-  That should get you started using methods from the Willpower class (and other classes) 
+  That should get you started using methods from the EZR class (and other classes) 
   Remember, you can always submit your own function ideas and we might make them methods of
   the class. Thank you!
 
