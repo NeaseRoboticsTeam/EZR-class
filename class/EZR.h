@@ -13,7 +13,7 @@
 #include <SmartDashboard/SmartDashboard.h>
 #include <Timer.h>
 #include <CameraServer.h>
-class Willpower{
+class EZR{
 	
 
 	private:
@@ -40,10 +40,10 @@ class Willpower{
 	std::string y = "y";
 
 	public:
-	Willpower(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);//constructor for willpower
-	Willpower(int LServoPort, int RServoPort, int LMotor, int RMotor);
-	Willpower(int FRP, int BRP, int FLP, int BLP);//constructor for willpower **example of constructor overloading**
-	Willpower(int LMotor, int RMotor);
+	EZR(int LServoPort, int RServoPort, int FRP, int BRP, int FLP, int BLP);//constructor for EZR
+	EZR(int LServoPort, int RServoPort, int LMotor, int RMotor);
+	EZR(int FRP, int BRP, int FLP, int BLP);//constructor for EZR **example of constructor overloading**
+	EZR(int LMotor, int RMotor);
 	frc::Servo LServo {LServoPort}; //constructor for left servo
 	frc::Servo RServo {RServoPort}; // constructor for right servo
 	frc::RobotDrive myRobot { FLP, BLP, FRP, BRP};
